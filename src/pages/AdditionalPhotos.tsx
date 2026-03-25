@@ -165,13 +165,12 @@ export const AdditionalPhotosPage = () => {
             )}
 
             <input
-              ref={(el) => { fileInputRefs.current[photo.id] = el; }}
-              type="file"
-              accept="image/*"
-              capture="environment"
-              onChange={(e) => handleFileChange(photo.id, e)}
-              className="hidden"
-            />
+  ref={(el) => { fileInputRefs.current[photo.id] = el; }}
+  type="file"
+  accept="image/*"
+  onChange={(e) => handleFileChange(photo.id, e)}
+  className="hidden"
+/>
 
             {/* Caption input */}
             <div className="relative">
