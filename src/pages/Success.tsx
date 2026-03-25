@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { 
   CheckCircle2, 
@@ -18,12 +18,50 @@ export const SuccessPage = () => {
   const navigate = useNavigate();
   const { currentJob, resetCurrentJob } = useStore();
   const [isDownloading, setIsDownloading] = useState(false);
-
+const blobToBase64 = (blob: Blob): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const result = reader.result as string;
+      resolve(result.split(',')[1]);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
   if (!currentJob || !currentJob.isCompleted) {
     navigate({ to: '/' });
     return null;
   }
+useEffect(() => {
+  const sendToPowerAutomate = async () => {
+    if (!currentJob || !currentJob.isCompleted) return;
 
+    try {
+      const blob = await generateReportPDF(currentJob);
+      const pdfBase64 = await blobToBase64(blob);
+
+      await fetch('https://defaulte97eb1c2739d4877876c1d0faa65b5.dd.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c973dacd63cf4c8b9963c23103ae2746/triggers/manual/paths/invoke?api-version=1', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          customerName: currentJob.customerName,
+          siteAddress: currentJob.siteAddress,
+          installerName: currentJob.installerName,
+          cmceModel: currentJob.cmceModel,
+          cmceSerialNumber: currentJob.cmceSerialNumber,
+          pdfFileName: `CMCE Report ${currentJob.customerName.replace(/\s+/g, '_')}.pdf`,
+          pdfBase64,
+        }),
+      });
+    } catch (error) {
+      console.error('Power Automate submission failed:', error);
+    }
+  };
+
+  sendToPowerAutomate();
+}, [currentJob]);
   const handleFinish = () => {
     resetCurrentJob();
     navigate({ to: '/' });
