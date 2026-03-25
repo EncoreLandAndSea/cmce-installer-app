@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 224 76% 48%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 226 70% 55%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 224 76% 48%;
+
+    --radius: 0.75rem;
+
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+
+    --font-sans: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans), sans-serif;
+  }
+}
+
+.signature-pad {
+  @apply w-full h-48 border-2 border-dashed border-border rounded-xl bg-white overflow-hidden;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground h-12 px-6 rounded-xl font-semibold flex items-center justify-center gap-2 active:scale-95 transition-transform disabled:opacity-50 disabled:active:scale-100;
+  }
+  
+  .btn-secondary {
+    @apply bg-white border border-border text-foreground h-12 px-6 rounded-xl font-semibold flex items-center justify-center gap-2 active:scale-95 transition-transform;
+  }
+
+  .btn-ghost {
+    @apply h-10 px-4 rounded-lg font-medium text-muted-foreground hover:text-foreground active:bg-muted transition-colors;
+  }
+
+  .card-rugged {
+    @apply bg-white border border-border rounded-xl shadow-sm overflow-hidden;
+  }
+
+  .input-field {
+    @apply w-full h-12 px-4 rounded-xl border border-border bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all;
+  }
+
+  .step-card {
+    @apply card-rugged p-6 animate-fade-in;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
