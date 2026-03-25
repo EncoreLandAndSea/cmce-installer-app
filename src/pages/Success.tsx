@@ -40,7 +40,7 @@ useEffect(() => {
       const blob = await generateReportPDF(currentJob);
       const pdfBase64 = await blobToBase64(blob);
 
-      await fetch('https://defaulte97eb1c2739d4877876c1d0faa65b5.dd.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c973dacd63cf4c8b9963c23103ae2746/triggers/manual/paths/invoke?api-version=1', {
+      await fetch('/api/send-report', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
