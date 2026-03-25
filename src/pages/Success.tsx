@@ -99,8 +99,8 @@ useEffect(() => {
           <h1 className="text-3xl font-black tracking-tight text-slate-900 uppercase">Installation Complete</h1>
           <p className="text-muted-foreground font-medium">Site: <span className="text-primary font-bold">{currentJob.customerName}</span></p>
           <p className="text-xs text-muted-foreground mt-2 font-medium">
-            Export the PDF below and send it to your<br/>
-            <span className="text-slate-900 font-bold">office or project file.</span>
+            Save the PDF below<br/>
+            <span className="text-slate-900 font-bold">for your records!</span>
           </p>
         </div>
 
