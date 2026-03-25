@@ -20,7 +20,6 @@ export const SignaturePage = () => {
   const navigate = useNavigate();
   const { currentJob, completeJob } = useStore();
   const sigCanvasRef = useRef<SignatureCanvas>(null);
-  const [remarks, setRemarks] = useState('');
   const [isSigning, setIsSigning] = useState(false);
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [isCertified, setIsCertified] = useState(false);
