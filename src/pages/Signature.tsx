@@ -129,17 +129,6 @@ export const SignaturePage = () => {
          </div>
       </section>
 
-      {/* Final Remarks */}
-      <section className="space-y-3">
-         <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Final Remarks / Observations</h3>
-         <textarea 
-           placeholder="Any final notes or observations about the site..."
-           value={remarks}
-           onChange={(e) => setRemarks(e.target.value)}
-           className="input-field min-h-[100px] py-4 text-sm"
-         />
-      </section>
-
       {/* Certification Checkbox */}
       <section className="bg-slate-50 border border-slate-200 rounded-2xl p-5 shadow-sm transition-all hover:border-primary/30">
         <label className="flex items-start gap-4 cursor-pointer group">
