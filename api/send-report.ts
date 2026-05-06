@@ -5,7 +5,7 @@ export default async function handler(req: any, res: any) {
 
   try {
     const response = await fetch(
-      'https://default4ad97cc94a4f4cc58b6d236f262514.4e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/6dce196d44794f1bbb2e3908f976c151/triggers/manual/paths/invoke?api-version=1',
+      'https://default4ad97cc94a4f4cc58b6d236f262514.4e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/6dce196d44794f1bbb2e3908f976c151/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=2IwdNvv3Arv8DFytWQORkaRN5JQHEUrPJUumwIGR3HQ',
       {
         method: 'POST',
         headers: {
